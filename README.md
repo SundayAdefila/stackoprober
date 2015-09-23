@@ -3,7 +3,7 @@
 This project is an attempt at getting a script that could be visiting a site on my behalf at a specific time each day.
 
 ###### Ruby version
-Ruby 2.2
+Ruby 2.2.1
 ###### System dependencies
  * Nokogiri
 
