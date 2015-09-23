@@ -22,5 +22,8 @@ module Stacko
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    config.base_url = ENV['BASE_URL']
+    config.gmail_address = ENV['GMAIL_ADDRESS']
+    config.gmail_password = ENV['GMAIL_PASSWORD']
   end
 end

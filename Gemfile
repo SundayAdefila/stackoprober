@@ -15,5 +15,7 @@ gem "watir-rails"
 # Whenever for scheduling jobs
 gem 'whenever', '~> 0.9.4', :require => false
 
+gem "letter_opener", :group => :development
+
 # Use unicorn as the app server
 # gem 'unicorn'
