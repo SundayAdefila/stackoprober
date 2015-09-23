@@ -18,7 +18,8 @@ module PushWatir
 
   class Stacko
     def self.enter
-      browser = Watir::Browser.new
+      # browser = Watir::Browser.new # this uses firefox to see what is going on
+      browser = Watir::Browser.new :phantomjs # this is an "headless" browser. no GUI
       browser.goto Rails.configuration.base_url
       browser.div(class: "topbar-links")
           .div(class: 'links-container')
@@ -29,7 +30,7 @@ module PushWatir
           .fire_event :click
 
       # Fill in the email and click next
-      browser.text_field(id: 'Email', name: 'Email').set Rails.configuration.gmail_address
+      browser.text_field(id: 'Email', name: 'Email').when_present.set Rails.configuration.gmail_address
       browser.input(id: 'next', value: 'Next').fire_event :click
 
       # Fill in the password and signin

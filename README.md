@@ -6,6 +6,7 @@ This project is an attempt at getting a script that could be visiting a site on 
 Ruby 2.2.1
 ###### System dependencies
  * Nokogiri
+ * phantomJs `brew install phantomjs` on macOS
 
 ###### Configuration
 clone project, run bundle install, no need to run any migrations as there is no database...
