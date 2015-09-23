@@ -14,7 +14,9 @@ clone project, run bundle install, no need to run any migrations as there is no 
 As at now, there is no test yet #shy_to_admit
 
 ###### Services (job queues, cache servers, search engines, etc.)
-Planning to use job queues for sure :)
+Using Whenever to run schedueled jobs
+
+Also Using Mailers for sending success emails.
 
 ###### Deployment instructions
 you can always create a new branch to make additions/subtractions/modifications and then send out a pull request. It will be attended to. :)
