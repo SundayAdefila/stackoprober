@@ -6,7 +6,7 @@ This project is an attempt at getting a script that could be visiting a site on 
 Ruby 2.2
 ###### System dependencies
  * Nokogiri
- 
+
 ###### Configuration
 clone project, run bundle install, no need to run any migrations as there is no database...
 

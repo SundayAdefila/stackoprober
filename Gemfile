@@ -12,6 +12,7 @@ gem 'sqlite3'
 gem "figaro"
 gem 'pry'
 gem 'mechanize', '~> 2.7.3'
+gem "watir-rails"
 
 
 

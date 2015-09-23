@@ -3,9 +3,16 @@ module Push
     require 'rubygems'
     require 'mechanize'
 
-    def enter
+    def self.enter
       me = Mechanize.new
-      land_page = me.get(ENV['BASE_URL'])
+      me.get(ENV['BASE_URL']) do |page|
+        login_page = me.click(page.link_with(:text => /log in/))
+        binding.pry
+        # login_form = login_page.form_with(:action => '/users/sign_in') do |f|
+        #   f.field_with(type: 'email').value = ENV['EMAIL_ADDRESS']
+        #   f.field_with(type: 'password').value = ENV['EMAIL_PASSWORD']
+        # end.click_button
+      end
     end
   end
 
@@ -20,7 +27,7 @@ module Push
 
     def self.enter
       me = Mechanize.new
-      me.get(ENV['BASE_URL']) do |page|
+      me.get(ENV['TEST_BASE_URL']) do |page|
         login_page = me.click(page.link_with(:text => /Sign in/))
         login_form = login_page.form_with(:action => '/users/sign_in') do |f|
           f.field_with(type: 'email').value = ENV['EMAIL_ADDRESS']
