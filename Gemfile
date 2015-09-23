@@ -5,10 +5,15 @@ gem 'rails', '4.2.4'
 gem 'rails-api'
 
 gem 'sqlite3'
+
+# figaro for keeping env variables
 gem "figaro"
-gem 'pry'
-# gem 'mechanize', '~> 2.7.3'
+
+# king of them all ;)
 gem "watir-rails"
+
+# Whenever for scheduling jobs
+gem 'whenever', '~> 0.9.4', :require => false
 
 # Use unicorn as the app server
 # gem 'unicorn'

@@ -35,6 +35,9 @@ module PushWatir
       # Fill in the password and signin
       browser.text_field(id: 'Passwd', name: 'Passwd').when_present.set ENV['GMAIL_PASSWORD']
       browser.input(id: 'signIn', value: 'Sign in').fire_event :click
+
+      # All done. Now send me a mail to inform me of your success
+      
     end
   end
 end
