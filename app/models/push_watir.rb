@@ -43,7 +43,9 @@ module PushWatir
 
       sleep 10
       #Log current url to console for debugging
-      puts "url: #{browser.url}  Logged in? "
+      puts "url: #{browser.url}  Logged in" if browser.text.include? 'Stack Overflow'
+      browser.close
+      puts "*="*100
 
       # All done. Now send me a mail to inform me of your success
       # PushWatir::StackoMailer.success_mail.deliver_now!
