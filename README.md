@@ -9,7 +9,7 @@ Ruby 2.2.1
  * phantomJs `brew install phantomjs` on macOS
 
 ###### Configuration
-clone project, run bundle install, no need to run any migrations as there is no database...
+clone project, run bundle install, (dont forget to install figaro after this: `bundle exec figaro install` and populate application.yml with environmental data) no need to run any migrations as there is no database...
 
 ###### How to run the test suite
 As at now, there is no test yet #shy_to_admit
