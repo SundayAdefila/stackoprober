@@ -41,9 +41,14 @@ module PushWatir
       puts "Password entered" if browser.text_field(id: 'Passwd', name: 'Passwd').when_present.set Rails.configuration.gmail_password
       puts "Google sign in button clicked" if browser.input(id: 'signIn', value: 'Sign in').fire_event :click
 
-      sleep 10
+      sleep 5
       #Log current url to console for debugging
       puts "url: #{browser.url}  Logged in" if browser.text.include? 'Stack Overflow'
+
+      #check my profile
+      puts "profile clicked" if click_my_profile_link(browser)
+      play_around_small(browser)
+      sleep 2
       browser.close
       puts "*="*100
 
@@ -62,6 +67,21 @@ module PushWatir
       browser.div(id: 'openid-buttons').when_present
           .div(class: 'google-login')
           .fire_event :click
+    end
+
+    def self.click_my_profile_link(browser)
+      browser.div(class: "topbar-links").when_present
+          .link(class: 'profile-me js-gps-track').click
+    end
+
+    def self.play_around_small(browser)
+      links = ['Profile', 'Activity', 'Edit Profile & Settings']
+      links.each do |link|
+        browser.div(id: 'content').when_present
+            .div(id: 'mainbar-full').when_present
+            .div(class: 'subheader reloaded js-user-header').div(id: 'tabs').when_present
+            .link(text: link).click
+      end
     end
   end
 
