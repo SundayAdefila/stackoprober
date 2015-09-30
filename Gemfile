@@ -17,5 +17,7 @@ gem 'whenever', '~> 0.9.4', :require => false
 
 gem "letter_opener", :group => :development
 
+gem 'pry'
+
 # Use unicorn as the app server
 # gem 'unicorn'
