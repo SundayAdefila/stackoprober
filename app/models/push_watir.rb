@@ -1,21 +1,4 @@
 module PushWatir
-  class Cadw
-
-    ##################################################################
-    ##  THIS CLASS IS JUST A TEST TO UNDERSTAND HOW THIS WILL WORK  ##
-    ##  ON ANOTHER LOCAL PROJECT. MAIN METHOD IS THE ONE BELOW. :)  ##
-    ##################################################################
-
-    def self.enter
-      browser = Watir::Browser.new
-      browser.goto ENV['TEST_BASE_URL']
-      browser.a(:class, 'sign-in').click
-      browser.text_field(:id => 'user_email').set ENV['TEST_EMAIL_ADDRESS']
-      browser.text_field(:id => 'user_password').set ENV['TEST_EMAIL_PASSWORD']
-      browser.button(:name => 'button', type: 'submit').click
-    end
-  end
-
   class Stacko
     def self.enter
       # browser = Watir::Browser.new # this uses firefox to see what is going on
@@ -49,21 +32,27 @@ module PushWatir
       puts "Password entered"
       browser.input(id: 'signIn', value: 'Sign in').when_present.fire_event :click
       puts "Google sign in button clicked"
-      sleep 2
-      puts browser.url.split('.')[0]
-
       browser.div(id: 'header').div(id: 'hlogo').when_present
-      puts browser.text
+
+      sleep 7
+      puts browser.url.split('.')[0]
+      text = get_page_text(browser)
+      puts text
+
       #Log current url to console for debugging
-      # puts "url: #{browser.url}  Logged in" if browser.text.include? 'Stack Overflow'
+      if text.include? 'Stack Overflow'
+        puts "Successfully Logged in"
+      else
+        puts "Unable to Logged in"
+      end
 
-
-      # #check my profile
-      # puts "profile clicked" if click_my_profile_link(browser)
-      # play_around_small(browser)
-      # sleep 2
-      # browser.close
-      # puts "*="*100
+      #check my profile
+      click_my_profile_link(browser)
+      puts "profile clicked"
+      play_around_small(browser)
+      browser.close
+      puts "All done"
+      puts "*="*100
 
       # All done. Now send me a mail to inform me of your success
       # PushWatir::StackoMailer.success_mail.deliver_now!
@@ -96,7 +85,18 @@ module PushWatir
             .div(id: 'mainbar-full').when_present
             .div(class: 'subheader reloaded js-user-header').div(id: 'tabs').when_present
             .link(text: link).click
+        puts "#{link} clicked"
+        sleep 2
       end
+    end
+
+    def self.get_page_text(browser)
+      a = []
+      b = browser.text.split(" ")
+      0.upto 5 do |n|
+        a << b[n]
+      end
+      a.join(" ")
     end
   end
 
