@@ -7,13 +7,13 @@ module PushWatir
       #Log current url to console for debugging
       puts browser.url
       login_link_clicked(browser)
-      sleep 2
+      Kernel.sleep 2
       puts browser.url.split('.')[0]
 
       #Log current url to console for debugging
       puts "url is: #{browser.url}. about to click google login"
       google_login_link_clicked(browser)
-      sleep 2
+      Kernel.sleep 2
       puts browser.url.split('.')[0]
       #Log current url to console for debugging
       puts "About to fill in the Google mail address with: #{Rails.configuration.gmail_address}"
@@ -34,7 +34,7 @@ module PushWatir
       puts "Google sign in button clicked"
       browser.div(id: 'header').div(id: 'hlogo').when_present
 
-      sleep 7
+      Kernel.sleep 7
       puts browser.url.split('.')[0]
       text = get_page_text(browser)
       puts text
@@ -86,7 +86,7 @@ module PushWatir
             .div(class: 'subheader reloaded js-user-header').div(id: 'tabs').when_present
             .link(text: link).click
         puts "#{link} clicked"
-        sleep 2
+        Kernel.sleep 2
       end
     end
 
